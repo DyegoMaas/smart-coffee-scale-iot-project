@@ -1,5 +1,6 @@
-C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\micro\Debug\VerificaSeTemCafeNaGarrafa.cpp.o: \
- C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\micro\Debug\VerificaSeTemCafeNaGarrafa.cpp \
+C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\micro\Debug\Balanca.cpp.o: \
+ C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\micro\Debug\Balanca.cpp \
+ C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\micro\Debug\Balanca.h \
  D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/arduino.h \
  D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/binary.h \
  D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/WCharacter.h \
@@ -14,6 +15,5 @@ C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa
  D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/USBCore.h \
  D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\variants\micro/pins_arduino.h \
  D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\variants\micro/../leonardo/pins_arduino.h \
- C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\micro\Debug\Balanca.h \
- D:\Arquivos\ de\ Programas\ (x86)\Microsoft\ Visual\ Studio\ 14.0\Common7\IDE\Extensions\uoevxfae.glt\Micro\ Platforms\default\debuggers\VM_DBG/VM_DBG.h \
+ D:\Documents\Arduino\libraries\HX711/HX711.h \
  D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h

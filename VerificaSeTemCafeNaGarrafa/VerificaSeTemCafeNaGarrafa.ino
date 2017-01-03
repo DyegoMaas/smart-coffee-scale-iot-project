@@ -16,30 +16,19 @@ a quantidade de líquido fica abaixo de um valor pré-definido.
 ###################################################################
 */
 
-#include <HX711.h>
-HX711 celulaDeCarga(2, 3);
-const float fatorDeCalibracao = 35600.f;
-const int velocidadeDaComunicacaoSerial = 115200;
-const int atrasoNoLoopDeAquisicaoDeDados = 3000;
+#include "Balanca.h"
+Balanca balanca;
 
 void setup() {
-	Serial.begin(velocidadeDaComunicacaoSerial);
-	celulaDeCarga.set_scale(fatorDeCalibracao);
-	celulaDeCarga.tare();
+	Serial.begin(115200);
+	balanca.parametros(2, 3, 35600.f, 1000);
+	balanca.inicializar();
 }
 
 void loop() {
-	float peso = lerValorDoPeso();
+	float peso = balanca.lerValorDoPeso();
 	Serial.print("Peso: ");
 	Serial.print(peso);
 	Serial.println("kg");
 }
 
-float lerValorDoPeso() {
-	celulaDeCarga.power_down();
-	delay(atrasoNoLoopDeAquisicaoDeDados);
-	celulaDeCarga.power_up();
-	float peso = celulaDeCarga.get_units() * 0.1;
-	peso = (peso < 0.01 && peso > -0.01) ? 0.0 : peso;
-	return peso;
-}
