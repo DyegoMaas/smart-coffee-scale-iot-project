@@ -83,12 +83,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Balanca.h" />
+    <ClInclude Include="GarrafaCafe.h" />
     <ClInclude Include="__vm\.VerificaSeTemCafeNaGarrafa.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Balanca.cpp" />
+    <ClCompile Include="GarrafaCafe.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties arduino.upload.port="COM5" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

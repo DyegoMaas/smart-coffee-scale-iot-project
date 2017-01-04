@@ -16,19 +16,32 @@ a quantidade de líquido fica abaixo de um valor pré-definido.
 ###################################################################
 */
 
-#include "Balanca.h"
-Balanca balanca;
+#include "GarrafaCafe.h"
 
 void setup() {
 	Serial.begin(115200);
-	balanca.parametros(2, 3, 35600.f, 1000);
-	balanca.inicializar();
 }
 
 void loop() {
-	float peso = balanca.lerValorDoPeso();
-	Serial.print("Peso: ");
-	Serial.print(peso);
+	Serial.print("Peso da garrafa vazia: ");
+	Serial.print(GarrafaCafe.getPesoGarrafaVazia());
 	Serial.println("kg");
-}
 
+	Serial.print("Peso da garrafa cheia: ");
+	Serial.print(GarrafaCafe.getPesoGarrafaCheia());
+	Serial.println("kg");
+
+	Serial.print("Peso atual na balanca: ");
+	Serial.print(Balanca.lerValorDoPeso());
+	Serial.println("kg");
+
+	Serial.print("Quantidade de cafe na garrafa: ");
+	Serial.print(GarrafaCafe.QuantidadeCafeEmMl() * 100);
+	Serial.println("%");
+	Serial.println();
+
+	Serial.print("Situacao da garrafa: ");
+	Serial.println(GarrafaCafe.stringSituacaoGarrafa[GarrafaCafe.VerificaSituacaoCafe()]);
+	Serial.println("---------------------------------------");
+
+}

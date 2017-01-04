@@ -12,17 +12,16 @@
 #include "WProgram.h"
 #endif
 
-class Balanca
+class BalancaClass
 {
-public:
-	void parametros(int pinDt, int pinSck, int fatorDeCalibracao, int atrasoNoLoopDeAquisicaoDeDados);
-	float lerValorDoPeso();
-	void inicializar();
-
 private:
-	int _pinDt;
-	int _pinSck;
-	int _fatorDeCalibracao;
-	int _atrasoNoLoopDeAquisicaoDeDados;
+	int _atraso_no_loop_de_aquisicao_de_dados;
+
+public:
+	BalancaClass();
+	BalancaClass(int pin_dt, int pin_sck, float fator_de_calibracao, int atraso_no_loop_de_aquisicao_de_dados);
+	float lerValorDoPeso() const;
 };
+
+extern BalancaClass Balanca;
 #endif
