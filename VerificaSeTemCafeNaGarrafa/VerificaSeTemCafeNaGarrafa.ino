@@ -41,7 +41,7 @@ void loop() {
 	Serial.println();
 
 	Serial.print("Situacao da garrafa: ");
-	Serial.println(GarrafaCafe.stringSituacaoGarrafa[GarrafaCafe.VerificaSituacaoCafe()]);
+	Serial.println(GarrafaCafe.stringSituacaoGarrafa[GarrafaCafe.VerificarSituacaoCafe()]);
 	Serial.println("---------------------------------------");
 
 }

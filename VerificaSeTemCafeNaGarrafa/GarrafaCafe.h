@@ -12,18 +12,18 @@
 
 class GarrafaCafeClass
 {
-private:
 	float _peso_garrafa_vazia;
 	float _peso_garrafa_cheia;
 	float _porcentagem_cafe;
 	float _quantidade_cafe_em_ml;
 	float _maximo_cafe;
 
+	const int _pin_calibra_garrafa_vazia = 4;
+	const int _pin_calibra_garrafa_cheia = 5;
 	const float _porcentagem_pouco_cafe = 0.3f;
 	const float _fator_conversao_porcentagem_ml_cafe = 1.0f;
 public:
-	explicit GarrafaCafeClass() : _peso_garrafa_vazia(1.0f), _peso_garrafa_cheia(3.0f), _porcentagem_cafe(0.0f), _quantidade_cafe_em_ml(0.0f), _maximo_cafe(2.0f)
-	{}
+	explicit GarrafaCafeClass();
 
 	const String stringSituacaoGarrafa[4] = { "Fora da balanca", "Alguem pegando cafe", "Cafe acabando", "Tem cafe"};
 	enum SituacaoGarrafa
@@ -33,8 +33,10 @@ public:
 		AcabandoCafe,
 		TemCafe
 	};
+	SituacaoGarrafa VerificarSituacaoCafe();
 
-	SituacaoGarrafa VerificaSituacaoCafe();
+	void ChecarBotoesCalibrarPesoGarrafa();
+
 	float PorcentagemCafeNagarrafa();
 	float QuantidadeCafeEmMl();
 

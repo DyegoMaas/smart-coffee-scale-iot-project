@@ -14,7 +14,6 @@
 
 class BalancaClass
 {
-private:
 	int _atraso_no_loop_de_aquisicao_de_dados;
 
 public:

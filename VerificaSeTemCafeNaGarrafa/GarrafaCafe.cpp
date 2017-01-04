@@ -1,10 +1,17 @@
 #include "GarrafaCafe.h"
 GarrafaCafeClass GarrafaCafe;
 
-GarrafaCafeClass::SituacaoGarrafa GarrafaCafeClass::VerificaSituacaoCafe()
+GarrafaCafeClass::GarrafaCafeClass(): _peso_garrafa_vazia(1.0f), _peso_garrafa_cheia(3.0f), _porcentagem_cafe(0.0f), _quantidade_cafe_em_ml(0.0f), _maximo_cafe(2.0f)
 {
+	pinMode(_pin_calibra_garrafa_vazia, INPUT_PULLUP);
+	pinMode(_pin_calibra_garrafa_cheia, INPUT_PULLUP);
+}
+
+GarrafaCafeClass::SituacaoGarrafa GarrafaCafeClass::VerificarSituacaoCafe()
+{
+	ChecarBotoesCalibrarPesoGarrafa();
 	PorcentagemCafeNagarrafa();
-	SituacaoGarrafa situacaoGarrafa = {};
+	SituacaoGarrafa situacaoGarrafa;
 	if (_porcentagem_cafe < 0.0f)
 	{
 		situacaoGarrafa = GarrafaForaDaBalanca;
@@ -22,6 +29,22 @@ GarrafaCafeClass::SituacaoGarrafa GarrafaCafeClass::VerificaSituacaoCafe()
 		situacaoGarrafa = AlguemPegandoCafe;
 	}
 	return situacaoGarrafa;
+}
+
+void GarrafaCafeClass::ChecarBotoesCalibrarPesoGarrafa()
+{
+	auto botaoCalibraGarrafaVazia = digitalRead(_pin_calibra_garrafa_vazia);
+	auto botaoCalibraGarrafaCheia = digitalRead(_pin_calibra_garrafa_cheia);
+
+	if(botaoCalibraGarrafaVazia == LOW)
+	{
+		setPesoGarrafaVazia();
+	}
+
+	if(botaoCalibraGarrafaCheia ==  LOW)
+	{
+		setPesoGarrafaCheia();
+	}
 }
 
 float GarrafaCafeClass::PorcentagemCafeNagarrafa()
