@@ -18,10 +18,11 @@ class GarrafaCafeClass
 	float _quantidade_cafe_em_ml;
 	float _maximo_cafe;
 
-	const int _pin_calibra_garrafa_vazia = 4;
-	const int _pin_calibra_garrafa_cheia = 5;
-	const float _porcentagem_pouco_cafe = 0.3f;
-	const float _fator_conversao_porcentagem_ml_cafe = 1.0f;
+	const int PINO_CALIBRA_GARRAFA_VAZIA = 4;
+	const int PINO_CALIBRA_GARRAFA_CHEIA = 5;
+	const float PORCENTAGEM_POUCO_CAFE = 0.3f;
+	const float FATOR_CONVERSAO_PORCENTAGEM_ML_CAFE = 1.0f;
+
 public:
 	explicit GarrafaCafeClass();
 

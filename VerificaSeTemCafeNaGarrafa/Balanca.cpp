@@ -12,9 +12,9 @@ BalancaClass::BalancaClass()
 	this->_atraso_no_loop_de_aquisicao_de_dados = 500;
 }
 
-BalancaClass::BalancaClass(int pin_dt, int pin_sck, float fator_de_calibracao, int atraso_no_loop_de_aquisicao_de_dados)
+BalancaClass::BalancaClass(int pino_dt, int pino_sck, float fator_de_calibracao, int atraso_no_loop_de_aquisicao_de_dados)
 {
-	celulaDeCarga = HX711(pin_dt, pin_sck);
+	celulaDeCarga = HX711(pino_dt, pino_sck);
 	celulaDeCarga.set_scale(fator_de_calibracao);
 	celulaDeCarga.tare();
 	this->_atraso_no_loop_de_aquisicao_de_dados = atraso_no_loop_de_aquisicao_de_dados;

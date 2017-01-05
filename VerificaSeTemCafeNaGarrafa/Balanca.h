@@ -18,7 +18,7 @@ class BalancaClass
 
 public:
 	BalancaClass();
-	BalancaClass(int pin_dt, int pin_sck, float fator_de_calibracao, int atraso_no_loop_de_aquisicao_de_dados);
+	BalancaClass(int pino_dt, int pino_sck, float fator_de_calibracao, int atraso_no_loop_de_aquisicao_de_dados);
 	float lerValorDoPeso() const;
 };
 

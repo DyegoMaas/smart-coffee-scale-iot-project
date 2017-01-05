@@ -19,7 +19,8 @@ a quantidade de líquido fica abaixo de um valor pré-definido.
 #include "GarrafaCafe.h"
 
 void setup() {
-	Serial.begin(115200);
+	auto velocidadeComunicacaoSerial = 115200;
+	Serial.begin(velocidadeComunicacaoSerial);
 }
 
 void loop() {
