@@ -35,17 +35,13 @@ void GarrafaCafeClass::ChecarBotoesCalibrarPesoGarrafa()
 {
 	auto botaoCalibraGarrafaVazia = digitalRead(PINO_CALIBRA_GARRAFA_VAZIA);
 	auto botaoCalibraGarrafaCheia = digitalRead(PINO_CALIBRA_GARRAFA_CHEIA);
-	//Serial.println("Status botao calibracao garrafa vazia: ");
-	//Serial.println(botaoCalibraGarrafaVazia);
-	//Serial.println("Status botao calibracao garrafa cheia: ");
-	//Serial.println(botaoCalibraGarrafaCheia);
 
-	if(botaoCalibraGarrafaVazia == LOW)
+	if (botaoCalibraGarrafaVazia == BOTAO_PRESSIONADO)
 	{
 		setPesoGarrafaVazia();
 	}
 
-	if(botaoCalibraGarrafaCheia ==  LOW)
+	if (botaoCalibraGarrafaCheia == BOTAO_PRESSIONADO)
 	{
 		setPesoGarrafaCheia();
 	}
@@ -53,7 +49,8 @@ void GarrafaCafeClass::ChecarBotoesCalibrarPesoGarrafa()
 
 float GarrafaCafeClass::PorcentagemCafeNagarrafa()
 {
-	auto pesoCafe = Balanca.lerValorDoPeso() - _peso_garrafa_vazia;
+	auto pesoAtualNaBalanca = Balanca.lerValorDoPeso();
+	auto pesoCafe = pesoAtualNaBalanca - _peso_garrafa_vazia;
 	_maximo_cafe = _peso_garrafa_cheia - _peso_garrafa_vazia;
 	_porcentagem_cafe = pesoCafe / _maximo_cafe;
 	return _porcentagem_cafe;
@@ -62,7 +59,7 @@ float GarrafaCafeClass::PorcentagemCafeNagarrafa()
 float GarrafaCafeClass::QuantidadeCafeEmMl()
 {
 	PorcentagemCafeNagarrafa();
-	_quantidade_cafe_em_ml = _porcentagem_cafe * FATOR_CONVERSAO_PORCENTAGEM_ML_CAFE;
+	_quantidade_cafe_em_ml = _porcentagem_cafe * FATOR_CONVERSAO_PORCENTAGEM_PARA_ML_CAFE;
 	if (_quantidade_cafe_em_ml < 0.0f) _quantidade_cafe_em_ml = 0.0f;
 	return _quantidade_cafe_em_ml;
 }

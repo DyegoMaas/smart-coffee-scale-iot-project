@@ -1,5 +1,3 @@
-// GarrafaCafe.h
-
 #ifndef _GARRAFACAFE_h
 #define _GARRAFACAFE_h
 
@@ -21,12 +19,14 @@ class GarrafaCafeClass
 	const int PINO_CALIBRA_GARRAFA_VAZIA = 4;
 	const int PINO_CALIBRA_GARRAFA_CHEIA = 5;
 	const float PORCENTAGEM_POUCO_CAFE = 0.3f;
-	const float FATOR_CONVERSAO_PORCENTAGEM_ML_CAFE = 1.0f;
+	const float FATOR_CONVERSAO_PORCENTAGEM_PARA_ML_CAFE = 1.0f;
+	const bool BOTAO_PRESSIONADO = LOW;
 
 public:
 	explicit GarrafaCafeClass();
 
-	const String stringSituacaoGarrafa[4] = { "Fora da balanca", "Alguem pegando cafe", "Cafe acabando", "Tem cafe"};
+	const String stringSituacaoGarrafa[4] = {"Fora da balanca", "Alguem pegando cafe", "Cafe acabando", "Tem cafe"};
+
 	enum SituacaoGarrafa
 	{
 		GarrafaForaDaBalanca,
@@ -34,6 +34,7 @@ public:
 		AcabandoCafe,
 		TemCafe
 	};
+
 	SituacaoGarrafa VerificarSituacaoCafe();
 
 	void ChecarBotoesCalibrarPesoGarrafa();
@@ -65,4 +66,3 @@ public:
 extern GarrafaCafeClass GarrafaCafe;
 
 #endif
-

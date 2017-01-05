@@ -1,8 +1,3 @@
-/*
-	Balanca.h
-	Biblioteca aquisição de dados da balança de café.
-*/
-
 #ifndef _BALANCA_h
 #define _BALANCA_h
 
