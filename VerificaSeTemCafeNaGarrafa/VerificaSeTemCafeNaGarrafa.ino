@@ -16,32 +16,22 @@ a quantidade de liquido fica abaixo de um valor pre-definido.
 ###################################################################
 */
 
+//#include "InterfaceUsuario.h"
 #include "GarrafaCafe.h"
 
 void setup()
 {
 	auto velocidadeComunicacaoSerial = 115200;
 	Serial.begin(velocidadeComunicacaoSerial);
+	while (!Serial){}
+	Serial.println("Serial OK!");
+	//InterfaceUsuario.Iniciar();
 }
 
 void loop()
 {
-	Serial.print("Peso da garrafa vazia: ");
-	Serial.print(GarrafaCafe.getPesoGarrafaVazia());
-	Serial.println("kg");
-
-	Serial.print("Peso da garrafa cheia: ");
-	Serial.print(GarrafaCafe.getPesoGarrafaCheia());
-	Serial.println("kg");
-
-	Serial.print("Peso atual na balanca: ");
-	Serial.print(Balanca.lerValorDoPeso());
-	Serial.println("kg");
-
-	Serial.print("Quantidade de cafe na garrafa: ");
-	Serial.print(GarrafaCafe.QuantidadeCafeEmMl() * 100);
-	Serial.println("%");
-	Serial.println();
+	Serial.print("Quantidade cafe: ");
+	Serial.println(GarrafaCafe.QuantidadeCafeEmMl());
 
 	Serial.print("Situacao da garrafa: ");
 	Serial.println(GarrafaCafe.stringSituacaoGarrafa[GarrafaCafe.VerificarSituacaoCafe()]);

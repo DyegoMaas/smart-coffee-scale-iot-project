@@ -13,14 +13,16 @@ class GarrafaCafeClass
 	float _peso_garrafa_vazia;
 	float _peso_garrafa_cheia;
 	float _porcentagem_cafe;
-	float _quantidade_cafe_em_ml;
 	float _maximo_cafe;
 
-	const int PINO_CALIBRA_GARRAFA_VAZIA = 4;
-	const int PINO_CALIBRA_GARRAFA_CHEIA = 5;
+	const int PINO_IO_CALIBRACAO_GARRAFA_VAZIA = 9;
+	const int PINO_IO_CALIBRACAO_GARRAFA_CHEIA = 10;
 	const float PORCENTAGEM_POUCO_CAFE = 0.3f;
 	const float FATOR_CONVERSAO_PORCENTAGEM_PARA_ML_CAFE = 1.0f;
+	const float FATOR_TOLERANCIA_PORCENTAGEM_CAFE = 0.01f;
 	const bool BOTAO_PRESSIONADO = LOW;
+
+	static void FiltrarRuidoSinalBalanca(float& quantidade_cafe_em_ml);
 
 public:
 	explicit GarrafaCafeClass();
@@ -29,20 +31,20 @@ public:
 
 	enum SituacaoGarrafa
 	{
-		GarrafaForaDaBalanca,
-		AlguemPegandoCafe,
-		AcabandoCafe,
-		TemCafe
+		GarrafaForaDaBalanca = 0,
+		AlguemPegandoCafe = 1,
+		AcabandoCafe = 2,
+		TemCafe = 3
 	};
 
 	SituacaoGarrafa VerificarSituacaoCafe();
-
+	
 	void ChecarBotoesCalibrarPesoGarrafa();
 
-	float PorcentagemCafeNagarrafa();
+	float RecalcularPorcentagemCafeNagarrafa();
 	float QuantidadeCafeEmMl();
 
-	void setPesoGarrafaVazia()
+	void atualizarPesoGarrafaVazia()
 	{
 		_peso_garrafa_vazia = Balanca.lerValorDoPeso();
 	}
@@ -52,7 +54,7 @@ public:
 		return _peso_garrafa_vazia;
 	}
 
-	void setPesoGarrafaCheia()
+	void atualizarPesoGarrafaCheia()
 	{
 		_peso_garrafa_cheia = Balanca.lerValorDoPeso();
 	}

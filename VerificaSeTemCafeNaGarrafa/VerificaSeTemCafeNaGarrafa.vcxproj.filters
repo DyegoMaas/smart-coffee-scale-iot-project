@@ -27,12 +27,18 @@
     <ClInclude Include="GarrafaCafe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="InterfaceUsuario.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Balanca.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GarrafaCafe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceUsuario.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
