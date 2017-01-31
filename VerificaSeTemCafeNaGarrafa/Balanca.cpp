@@ -7,7 +7,7 @@ BalancaClass Balanca;
 BalancaClass::BalancaClass()
 {
 	celulaDeCarga = HX711(7, 8);
-	celulaDeCarga.set_scale(35600.f);
+	celulaDeCarga.set_scale(27000.f);
 	celulaDeCarga.tare();
 	this->_atraso_no_loop_de_aquisicao_de_dados = 500;
 }

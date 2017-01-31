@@ -30,6 +30,12 @@
     <ClInclude Include="InterfaceUsuario.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MensagemStatusGarrafa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoriaEeprom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Balanca.cpp">
@@ -39,6 +45,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InterfaceUsuario.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MensagemStatusGarrafa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoriaEeprom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

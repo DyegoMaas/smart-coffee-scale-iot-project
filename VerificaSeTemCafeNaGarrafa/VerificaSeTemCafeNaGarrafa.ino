@@ -16,24 +16,32 @@ a quantidade de liquido fica abaixo de um valor pre-definido.
 ###################################################################
 */
 
-//#include "InterfaceUsuario.h"
+#include "InterfaceUsuario.h"
+#include "MensagemStatusGarrafa.h"
 #include "GarrafaCafe.h"
 
 void setup()
 {
 	auto velocidadeComunicacaoSerial = 115200;
 	Serial.begin(velocidadeComunicacaoSerial);
-	while (!Serial){}
+	while (!Serial) {}
 	Serial.println("Serial OK!");
-	//InterfaceUsuario.Iniciar();
+	InterfaceUsuario.Iniciar();
 }
 
 void loop()
 {
-	Serial.print("Quantidade cafe: ");
-	Serial.println(GarrafaCafe.QuantidadeCafeEmMl());
+	int idSituacaoGarrafa = GarrafaCafe.VerificarSituacaoCafe();
+	auto situacaoGarrafa = MensagemStatusGarrafa.stringSituacaoGarrafa[idSituacaoGarrafa];
+	auto litrosCafe = GarrafaCafe.QuantidadeCafeEmMl();
+	auto porcentagem = GarrafaCafe._porcentagem_cafe;
+
+	Serial.print("Quantidade cafe (lt): ");
+	Serial.println(litrosCafe);
 
 	Serial.print("Situacao da garrafa: ");
-	Serial.println(GarrafaCafe.stringSituacaoGarrafa[GarrafaCafe.VerificarSituacaoCafe()]);
+	Serial.println(situacaoGarrafa);
 	Serial.println("---------------------------------------");
+
+	InterfaceUsuario.ImprimirInterfaceLCDPadrao(porcentagem, litrosCafe, idSituacaoGarrafa);
 }

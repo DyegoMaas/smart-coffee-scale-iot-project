@@ -47,8 +47,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\Documents\Arduino\libraries\HX711;$(ProjectDir)..\..\..\Program Files (x86)\Arduino\libraries\LiquidCrystal\src;$(ProjectDir)..\..\..\Program Files (x86)\Arduino\libraries;C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\libraries;$(ProjectDir)..\..\..\Documents\Arduino\libraries;C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino;C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\variants\standard;$(ProjectDir)..\VerificaSeTemCafeNaGarrafa;C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.3-arduino2\avr\include\;C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.3-arduino2\avr\include\avr\;C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.3-arduino2\lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>D:\dev\VerificaSeTemCafeNaGarrafa\VerificaSeTemCafeNaGarrafa\__vm\.VerificaSeTemCafeNaGarrafa.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\libraries\EEPROM\src;D:\Program Files (x86)\Arduino\libraries\LiquidCrystal\src;$(ProjectDir)..\..\..\Documents\Arduino\libraries\HX711;D:\Program Files (x86)\Arduino\libraries;C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\libraries;$(ProjectDir)..\..\..\Documents\Arduino\libraries;C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino;C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\variants\standard;$(ProjectDir)..\VerificaSeTemCafeNaGarrafa;C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.3-arduino2\avr\include\;C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.3-arduino2\avr\include\avr\;C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.3-arduino2\lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ProjectDir)__vm\.VerificaSeTemCafeNaGarrafa.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
       <PreprocessorDefinitions>__AVR_ATmega328p__;__AVR_ATmega328P__;_VMDEBUG=1;F_CPU=16000000L;ARDUINO=10800;ARDUINO_AVR_UNO;ARDUINO_ARCH_AVR;__cplusplus=201103L;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -85,12 +85,16 @@
     <ClInclude Include="Balanca.h" />
     <ClInclude Include="GarrafaCafe.h" />
     <ClInclude Include="InterfaceUsuario.h" />
+    <ClInclude Include="MemoriaEeprom.h" />
+    <ClInclude Include="MensagemStatusGarrafa.h" />
     <ClInclude Include="__vm\.VerificaSeTemCafeNaGarrafa.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Balanca.cpp" />
     <ClCompile Include="GarrafaCafe.cpp" />
     <ClCompile Include="InterfaceUsuario.cpp" />
+    <ClCompile Include="MemoriaEeprom.cpp" />
+    <ClCompile Include="MensagemStatusGarrafa.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

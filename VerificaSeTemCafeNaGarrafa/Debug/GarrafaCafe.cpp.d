@@ -1,18 +1,18 @@
-C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\micro\Debug\GarrafaCafe.cpp.o: \
- C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\micro\Debug\GarrafaCafe.cpp \
- C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\micro\Debug\GarrafaCafe.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/arduino.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/binary.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/WCharacter.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/WString.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/HardwareSerial.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Stream.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Print.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Printable.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/USBAPI.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/USBDesc.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/USBCore.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\variants\micro/pins_arduino.h \
- D:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\variants\micro/../leonardo/pins_arduino.h \
- C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\micro\Debug\Balanca.h
+C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\uno\Debug\GarrafaCafe.cpp.o: \
+ C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\uno\Debug\GarrafaCafe.cpp \
+ C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\uno\Debug\GarrafaCafe.h \
+ C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/arduino.h \
+ C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/binary.h \
+ C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/WCharacter.h \
+ C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/WString.h \
+ C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/HardwareSerial.h \
+ C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/Stream.h \
+ C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/Print.h \
+ C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/Printable.h \
+ C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/USBAPI.h \
+ C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/Arduino.h \
+ C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\variants\standard/pins_arduino.h \
+ C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\uno\Debug\Balanca.h \
+ C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\uno\Debug\MensagemStatusGarrafa.h \
+ C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\uno\Debug\MemoriaEeprom.h \
+ C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\libraries\EEPROM\src/EEPROM.h
