@@ -7,7 +7,7 @@ byte blocoBarra3[8] = { 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C };
 byte blocoBarra4[8] = { 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E };
 byte blocoBarra5[8] = { 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F };
 
-void InterfaceUsuarioClass::Iniciar()
+void InterfaceUsuarioClass::iniciar()
 {
 	lcd.begin(20, 4);
 	lcd.setCursor(0, 0);
@@ -23,7 +23,7 @@ void InterfaceUsuarioClass::criarCaracteresBarraProgresso()
 	lcd.createChar(5, blocoBarra5);
 }
 
-void InterfaceUsuarioClass::ImprimirBlocosCheios(int linha_lcd, int blocos)
+void InterfaceUsuarioClass::imprimirBlocosCheios(int linha_lcd, int blocos)
 {
 	if (blocos > 0) {
 		for (auto bloco = 0; bloco < blocos; bloco++)
@@ -34,7 +34,7 @@ void InterfaceUsuarioClass::ImprimirBlocosCheios(int linha_lcd, int blocos)
 	}
 }
 
-void InterfaceUsuarioClass::ImprimirUltimoBloco(int linha_lcd, int blocos, int colunasUltimoBloco)
+void InterfaceUsuarioClass::imprimirUltimoBloco(int linha_lcd, int blocos, int colunasUltimoBloco)
 {
 	auto ultimoBloco = blocos;
 	lcd.setCursor(ultimoBloco, linha_lcd);
@@ -44,7 +44,7 @@ void InterfaceUsuarioClass::ImprimirUltimoBloco(int linha_lcd, int blocos, int c
 	}
 }
 
-void InterfaceUsuarioClass::ImprimirBarraProgresso(int linha_lcd, float porcentagem)
+void InterfaceUsuarioClass::imprimirBarraProgresso(int linha_lcd, float porcentagem)
 {
 	criarCaracteresBarraProgresso();
 	int porcentagemSemVirgula = porcentagem * 100;
@@ -52,22 +52,22 @@ void InterfaceUsuarioClass::ImprimirBarraProgresso(int linha_lcd, float porcenta
 	int linha = map(porcentagemSemVirgula, 0, 100, 0, 80);
 	auto colunasUltimoBloco = (linha - (blocos * 5));
 
-	ImprimirBlocosCheios(linha_lcd, blocos);
-	ImprimirUltimoBloco(linha_lcd, blocos, colunasUltimoBloco);
+	imprimirBlocosCheios(linha_lcd, blocos);
+	imprimirUltimoBloco(linha_lcd, blocos, colunasUltimoBloco);
 }
 
-void InterfaceUsuarioClass::ImprimirBarraProgresso(int linha_lcd, int valor, int valor_minimo, int valor_maximo)
+void InterfaceUsuarioClass::imprimirBarraProgresso(int linha_lcd, int valor, int valor_minimo, int valor_maximo)
 {
 	criarCaracteresBarraProgresso();
 	int blocos = map(valor, valor_minimo, valor_maximo, 0, 20);
 	int linha = map(valor, valor_minimo, valor_maximo, 0, 80);
 	auto colunasUltimoBloco = (linha - (blocos * 5));
 
-	ImprimirBlocosCheios(linha_lcd, blocos);
-	ImprimirUltimoBloco(linha_lcd, blocos, colunasUltimoBloco);
+	imprimirBlocosCheios(linha_lcd, blocos);
+	imprimirUltimoBloco(linha_lcd, blocos, colunasUltimoBloco);
 }
 
-void InterfaceUsuarioClass::ImprimirInterfaceLCDPadrao(float porcentagem_cafe, float litros_cafe, int situacao_garrafa) const
+void InterfaceUsuarioClass::imprimirInterfaceLCDPadrao(float porcentagem_cafe, float litros_cafe, int situacao_garrafa) const
 {
 	if (porcentagem_cafe > 1.0f)
 	{
@@ -86,15 +86,27 @@ void InterfaceUsuarioClass::ImprimirInterfaceLCDPadrao(float porcentagem_cafe, f
 	
 	if (situacao_garrafa >= 2) {
 		lcd.setCursor(0, 2);
-		lcd.print(litros_cafe, 2);
-		lcd.print(" litros");
-
+		if (litros_cafe >= 1) {
+			lcd.print(litros_cafe, 2);
+			lcd.print(" litros");
+		}else
+		{
+			lcd.print(litros_cafe * 1000, 0);
+			lcd.print(" mL");
+		}
 		lcd.print(" (");
 		lcd.print(porcentagem_cafe * 100, 0);
 		lcd.print(" %)");
 
-		ImprimirBarraProgresso(3, porcentagem_cafe);
+		imprimirBarraProgresso(3, porcentagem_cafe);
 	}
+}
+
+void InterfaceUsuarioClass::imprimirMensagemLCD(String mensagem, int linha, bool clear)
+{
+	if(clear) lcd.clear();
+	lcd.setCursor(0, linha);
+	lcd.print(mensagem);
 }
 
 InterfaceUsuarioClass InterfaceUsuario;

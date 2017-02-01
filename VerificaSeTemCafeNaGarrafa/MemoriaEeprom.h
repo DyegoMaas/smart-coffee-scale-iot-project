@@ -8,7 +8,8 @@
 #else
 	#include "WProgram.h"
 #endif
-#include <EEPROM.h>
+#include "EEPROMex.h"
+#include "EEPROMVar.h"
 
 class MemoriaEepromClass
 {
@@ -19,10 +20,14 @@ class MemoriaEepromClass
 	 enum Endereco
 	 {
 		 endereco_garrafa_vazia = 0,
-		 endereco_garrafa_cheia = 2
+		 endereco_garrafa_cheia = 2,
+		 endereco_offset_balanca = 4
 	 };
 	static float ler(Endereco endereco);
+	static double lerDouble(Endereco endereco);
 	static bool gravar(Endereco endereco, float valor);
+	static bool gravar(Endereco endereco, double valor);
+
 };
 
 extern MemoriaEepromClass MemoriaEeprom;

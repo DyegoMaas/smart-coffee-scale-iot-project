@@ -16,8 +16,6 @@ a quantidade de liquido fica abaixo de um valor pre-definido.
 ###################################################################
 */
 
-#include "InterfaceUsuario.h"
-#include "MensagemStatusGarrafa.h"
 #include "GarrafaCafe.h"
 
 void setup()
@@ -26,7 +24,7 @@ void setup()
 	Serial.begin(velocidadeComunicacaoSerial);
 	while (!Serial) {}
 	Serial.println("Serial OK!");
-	InterfaceUsuario.Iniciar();
+	InterfaceUsuario.iniciar();
 }
 
 void loop()
@@ -36,6 +34,12 @@ void loop()
 	auto litrosCafe = GarrafaCafe.QuantidadeCafeEmMl();
 	auto porcentagem = GarrafaCafe._porcentagem_cafe;
 
+	Serial.print("Garrafa vazia: ");
+	Serial.println(GarrafaCafe._peso_garrafa_vazia);
+
+	Serial.print("Peso na balanca: ");
+	Serial.println(Balanca._peso_atual);
+
 	Serial.print("Quantidade cafe (lt): ");
 	Serial.println(litrosCafe);
 
@@ -43,5 +47,5 @@ void loop()
 	Serial.println(situacaoGarrafa);
 	Serial.println("---------------------------------------");
 
-	InterfaceUsuario.ImprimirInterfaceLCDPadrao(porcentagem, litrosCafe, idSituacaoGarrafa);
+	InterfaceUsuario.imprimirInterfaceLCDPadrao(porcentagem, litrosCafe, idSituacaoGarrafa);
 }

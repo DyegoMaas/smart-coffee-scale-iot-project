@@ -15,13 +15,14 @@
 class InterfaceUsuarioClass
 {
 	static void criarCaracteresBarraProgresso();
-	static void ImprimirBlocosCheios(int linha_lcd, int blocos);
-	static void ImprimirUltimoBloco(int linha_lcd, int blocos, int colunasUltimoBloco);
+	static void imprimirBlocosCheios(int linha_lcd, int blocos);
+	static void imprimirUltimoBloco(int linha_lcd, int blocos, int colunasUltimoBloco);
 public:
-	static void Iniciar();
-	static void ImprimirBarraProgresso(int linha_lcd, float porcentagem);
-	static void ImprimirBarraProgresso(int linha_lcd, int valor, int valor_minimo, int valor_maximo);
-	void ImprimirInterfaceLCDPadrao(float porcentagem_cafe, float mls_cafe, int situacao_garrafa) const;
+	static void iniciar();
+	static void imprimirBarraProgresso(int linha_lcd, float porcentagem);
+	static void imprimirBarraProgresso(int linha_lcd, int valor, int valor_minimo, int valor_maximo);
+	void imprimirInterfaceLCDPadrao(float porcentagem_cafe, float mls_cafe, int situacao_garrafa) const;
+	static void imprimirMensagemLCD(String mensagem, int linha, bool clear = false);
 };
 
 extern InterfaceUsuarioClass InterfaceUsuario;
