@@ -6,6 +6,8 @@
 #else
 #include "WProgram.h"
 #endif
+#include <Arduino.h>
+#include "Atmega328p.h"
 #include "MemoriaEeprom.h"
 
 class InterfaceHX711

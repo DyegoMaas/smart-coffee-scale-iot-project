@@ -82,23 +82,23 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Atmega328p.h" />
     <ClInclude Include="Balanca.h" />
     <ClInclude Include="Buzzer.h" />
     <ClInclude Include="GarrafaCafe.h" />
     <ClInclude Include="InterfaceHX711.h" />
     <ClInclude Include="InterfaceUsuario.h" />
-    <ClInclude Include="Melodias.h" />
     <ClInclude Include="MemoriaEeprom.h" />
     <ClInclude Include="MensagemStatusGarrafa.h" />
     <ClInclude Include="__vm\.VerificaSeTemCafeNaGarrafa.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Atmega328p.cpp" />
     <ClCompile Include="Balanca.cpp" />
     <ClCompile Include="Buzzer.cpp" />
     <ClCompile Include="GarrafaCafe.cpp" />
     <ClCompile Include="InterfaceHX711.cpp" />
     <ClCompile Include="InterfaceUsuario.cpp" />
-    <ClCompile Include="Melodias.cpp" />
     <ClCompile Include="MemoriaEeprom.cpp" />
     <ClCompile Include="MensagemStatusGarrafa.cpp" />
   </ItemGroup>

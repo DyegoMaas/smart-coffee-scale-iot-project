@@ -6,6 +6,7 @@
 #else
 	#include "WProgram.h"
 #endif
+#include "Atmega328p.h"
 #include <stdlib.h>
 #include <LiquidCrystal.h>
 #include "MensagemStatusGarrafa.h"

@@ -1,5 +1,4 @@
 #include "Buzzer.h"
-#define PINO_BUZZER A5
 
 #define NOTA_B0  31
 #define NOTA_C1  33
@@ -193,6 +192,19 @@ int tempos_tema_underworld[] = {
 	3, 3, 3
 };
 
+bool checarBotoesParaInterromper()
+{
+	auto botaoCalibrarBalanca = digitalRead(PINO_IO_CALIBRACAO_BALANCA);
+	auto botaoCalibrarGarrafaVazia = digitalRead(PINO_IO_CALIBRACAO_GARRAFA_VAZIA);
+	auto botaoCalibrarGarrafaCheia = digitalRead(PINO_IO_CALIBRACAO_GARRAFA_CHEIA);
+
+	auto algumBotaoPressionado = botaoCalibrarBalanca == BOTAO_PRESSIONADO ||
+		botaoCalibrarGarrafaVazia == BOTAO_PRESSIONADO ||
+		botaoCalibrarGarrafaCheia == BOTAO_PRESSIONADO;
+
+	return algumBotaoPressionado;
+}
+
 BuzzerClass::BuzzerClass()
 {
 	pinMode(PINO_BUZZER, OUTPUT);
@@ -221,6 +233,8 @@ void executarMusica(String nome_musica, int notas[], int tempos[], int quantidad
 	Serial.print("Tamanho musica:");
 	Serial.println(quantidadeNotas);
 	for (int estaNota = 0; estaNota < quantidadeNotas; estaNota++) {
+		
+		if(estaNota > 6 && checarBotoesParaInterromper()){break;}
 		int duracaoNota = 1000 / tempos[estaNota];
 
 		Buzzer.buzz(PINO_BUZZER, notas[estaNota], duracaoNota);

@@ -5,10 +5,9 @@ BalancaClass Balanca;
 
 BalancaClass::BalancaClass()
 {
-	celulaDeCarga = InterfaceHX711(7, 8);
+	celulaDeCarga = InterfaceHX711(PINO_IO_HX711_DT, PINO_IO_HX711_SCK);
 	celulaDeCarga.set_scale(27000.f);
-	//celulaDeCarga.tare();
-	this->_atraso_no_loop_de_aquisicao_de_dados = 500;
+	this->_atraso_no_loop_de_aquisicao_de_dados = 50;
 }
 
 BalancaClass::BalancaClass(int pino_dt, int pino_sck, float fator_de_calibracao, int atraso_no_loop_de_aquisicao_de_dados)

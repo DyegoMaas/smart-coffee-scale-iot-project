@@ -11,6 +11,7 @@ C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa
  C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/USBAPI.h \
  C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/Arduino.h \
  C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\variants\standard/pins_arduino.h \
+ C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\uno\Debug\Atmega328p.h \
  C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\uno\Debug\GarrafaCafe.h \
  C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\uno\Debug\Balanca.h \
  C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\uno\Debug\InterfaceHX711.h \
@@ -23,5 +24,4 @@ C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa
  D:\Program\ Files\ (x86)\Arduino\libraries\LiquidCrystal\src/LiquidCrystal.h \
  C:\Users\alexandre.alvaro\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino/Print.h \
  C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\uno\Debug\Buzzer.h \
- C:\Users\alexandre.alvaro\AppData\Local\Temp\VMBuilds\VerificaSeTemCafeNaGarrafa\uno\Debug\Melodias.h \
  D:\Arquivos\ de\ Programas\ (x86)\Microsoft\ Visual\ Studio\ 14.0\Common7\IDE\Extensions\mwsfxyve.3a2\Micro\ Platforms\default\debuggers\VM_DBG/VM_DBG.h

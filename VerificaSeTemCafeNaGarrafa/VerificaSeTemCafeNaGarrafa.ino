@@ -16,6 +16,7 @@ a quantidade de liquido fica abaixo de um valor pre-definido.
 ###################################################################
 */
 
+#include "Atmega328p.h"
 #include "GarrafaCafe.h"
 
 void setup()

@@ -15,16 +15,15 @@ class MensagemStatusGarrafaClass
 
 
  public:
-	 const String stringSituacaoGarrafa[5] = { "Sem Garrafa", "Pegando cafe", "Nivel Critico", "Cafe acabando", "Tem cafe" };
+	 const String stringSituacaoGarrafa[5] = { "Sem Garrafa", "Nivel Critico", "Cafe acabando", "Tem cafe", "Pegando cafe" };
 
 	 enum SituacaoGarrafa
 	 {
 		 GarrafaForaDaBalanca = 0,
-		 AlguemPegandoCafe = 1,
-		 NivelCriticoCafe = 2,
-		 AcabandoCafe = 3,
-		 TemCafe = 4
-
+		 NivelCriticoCafe = 1,
+		 AcabandoCafe = 2,
+		 TemCafe = 3,
+		 AlguemPegandoCafe = 4
 	 };
 };
 

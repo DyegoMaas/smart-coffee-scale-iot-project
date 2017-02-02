@@ -1,5 +1,4 @@
 #include "InterfaceUsuario.h"
-#define PINO_LED_STATUS A4
 
 LiquidCrystal lcd = LiquidCrystal(12, 11, 5, 4, 3, 2);
 byte blocoBarra1[8] = { 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10 };
@@ -7,6 +6,9 @@ byte blocoBarra2[8] = { 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18 };
 byte blocoBarra3[8] = { 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C };
 byte blocoBarra4[8] = { 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E };
 byte blocoBarra5[8] = { 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F };
+int piscaLed = 0;
+bool silenciaAlarme = false;
+unsigned long momentoAlarmeSilenciadoAte;
 
 void InterfaceUsuarioClass::iniciar()
 {
@@ -14,7 +16,11 @@ void InterfaceUsuarioClass::iniciar()
 	lcd.setCursor(0, 0);
 	pinMode(PINO_LED_STATUS, OUTPUT);
 
-	lcd.write("Iniciando...");
+	lcd.print("Iniciando");
+	for (auto i = 0; i <= 10; i++) {
+		delay(100);
+		lcd.print(".");
+	}
 }
 
 void InterfaceUsuarioClass::criarCaracteresBarraProgresso()
@@ -41,7 +47,7 @@ void InterfaceUsuarioClass::imprimirUltimoBloco(int linha_lcd, int blocos, int c
 {
 	auto ultimoBloco = blocos;
 	lcd.setCursor(ultimoBloco, linha_lcd);
-	if(colunasUltimoBloco > 0)
+	if (colunasUltimoBloco > 0)
 	{
 		lcd.write(colunasUltimoBloco);
 	}
@@ -70,6 +76,38 @@ void InterfaceUsuarioClass::imprimirBarraProgresso(int linha_lcd, int valor, int
 	imprimirUltimoBloco(linha_lcd, blocos, colunasUltimoBloco);
 }
 
+void checarBotoesPararAlarme()
+{
+	auto botaoCalibrarBalanca = digitalRead(PINO_IO_CALIBRACAO_BALANCA);
+	auto botaoCalibrarGarrafaVazia = digitalRead(PINO_IO_CALIBRACAO_GARRAFA_VAZIA);
+	auto botaoCalibrarGarrafaCheia = digitalRead(PINO_IO_CALIBRACAO_GARRAFA_CHEIA);
+
+	auto algumBotaoPressionado = botaoCalibrarBalanca == BOTAO_PRESSIONADO ||
+		botaoCalibrarGarrafaVazia == BOTAO_PRESSIONADO ||
+		botaoCalibrarGarrafaCheia == BOTAO_PRESSIONADO;
+
+	if (algumBotaoPressionado)
+	{
+		momentoAlarmeSilenciadoAte = millis() + (500 * 60);
+		silenciaAlarme = true;
+		Serial.print("Alarme silenciado ate: ");
+		Serial.println(momentoAlarmeSilenciadoAte);
+	}
+
+	if (millis() > momentoAlarmeSilenciadoAte)
+	{
+		silenciaAlarme = false;
+	};
+
+	if (silenciaAlarme)
+	{
+		Serial.print("millis: ");
+		Serial.print(millis());
+		Serial.print(" / ");
+		Serial.println(momentoAlarmeSilenciadoAte);
+	}
+}
+
 void InterfaceUsuarioClass::imprimirInterfaceLCDPadrao(float porcentagem_cafe, float litros_cafe, int situacao_garrafa) const
 {
 	if (porcentagem_cafe > 1.0f)
@@ -86,28 +124,75 @@ void InterfaceUsuarioClass::imprimirInterfaceLCDPadrao(float porcentagem_cafe, f
 	auto str = MensagemStatusGarrafa.stringSituacaoGarrafa[situacao_garrafa];
 	auto situacaoGarrafa = str.c_str();
 	lcd.print(situacaoGarrafa);
-	
-	if (situacao_garrafa >= 2) {
-		lcd.setCursor(0, 2);
-		if (litros_cafe >= 1) {
-			lcd.print(litros_cafe, 2);
-			lcd.print(" litros");
-		}else
-		{
-			lcd.print(litros_cafe * 1000, 0);
-			lcd.print(" mL");
-		}
-		lcd.print(" (");
-		lcd.print(porcentagem_cafe * 100, 0);
-		lcd.print(" %)");
 
-		imprimirBarraProgresso(3, porcentagem_cafe);
+
+	if (situacao_garrafa == MensagemStatusGarrafa.AcabandoCafe)
+	{
+		digitalWrite(PINO_LED_STATUS, piscaLed == 5);
+		if(!silenciaAlarme)
+			digitalWrite(PINO_BUZZER, piscaLed == 5);
 	}
+	else if (situacao_garrafa == MensagemStatusGarrafa.NivelCriticoCafe)
+	{
+		digitalWrite(PINO_LED_STATUS, piscaLed % 2);
+		if (!silenciaAlarme)
+			digitalWrite(PINO_BUZZER, piscaLed % 2);
+	}
+	else if (situacao_garrafa == MensagemStatusGarrafa.GarrafaForaDaBalanca)
+	{
+		digitalWrite(PINO_LED_STATUS, HIGH);
+		if (!silenciaAlarme)
+			digitalWrite(PINO_BUZZER, HIGH);
+	}
+	else
+	{
+		digitalWrite(PINO_LED_STATUS, LOW);
+	}
+
+	if (silenciaAlarme)
+	{
+		digitalWrite(PINO_BUZZER, LOW);
+		lcd.setCursor(0, 2);
+		long tempoRestante = momentoAlarmeSilenciadoAte - millis();
+		long segundosRestantes = tempoRestante < 1 ? 0 : (momentoAlarmeSilenciadoAte - millis()) / 1000;
+		lcd.print("Silenciado (");
+		lcd.print(segundosRestantes);
+		lcd.print(")");
+	}
+	else {
+		if (situacao_garrafa != MensagemStatusGarrafa.AlguemPegandoCafe &&
+			situacao_garrafa != MensagemStatusGarrafa.GarrafaForaDaBalanca) {
+			lcd.setCursor(0, 2);
+			if (litros_cafe >= 1) {
+				lcd.print(litros_cafe, 2);
+				lcd.print(" litros");
+			}
+			else
+			{
+				lcd.print(litros_cafe * 1000, 0);
+				lcd.print(" mL");
+			}
+			lcd.print(" (");
+			lcd.print(porcentagem_cafe * 100, 0);
+			lcd.print(" %)");
+
+			imprimirBarraProgresso(3, porcentagem_cafe);
+		}
+	}
+	if (piscaLed > 6)
+	{
+		piscaLed = 0;
+	}
+	else
+	{
+		piscaLed++;
+	}
+	checarBotoesPararAlarme();
 }
 
 void InterfaceUsuarioClass::imprimirMensagemLCD(String mensagem, int linha, bool clear)
 {
-	if(clear) lcd.clear();
+	if (clear) lcd.clear();
 	lcd.setCursor(0, linha);
 	lcd.print(mensagem);
 }

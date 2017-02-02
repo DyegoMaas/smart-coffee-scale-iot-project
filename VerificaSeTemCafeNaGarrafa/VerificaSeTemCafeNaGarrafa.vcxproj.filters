@@ -42,7 +42,7 @@
     <ClInclude Include="Buzzer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Melodias.h">
+    <ClInclude Include="Atmega328p.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,7 +68,7 @@
     <ClCompile Include="Buzzer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Melodias.cpp">
+    <ClCompile Include="Atmega328p.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

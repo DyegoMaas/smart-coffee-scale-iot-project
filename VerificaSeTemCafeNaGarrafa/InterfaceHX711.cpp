@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include "InterfaceHX711.h"
 
 InterfaceHX711::InterfaceHX711(byte dout, byte pd_sck, byte gain) {
