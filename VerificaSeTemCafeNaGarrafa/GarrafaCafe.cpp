@@ -46,6 +46,13 @@ void GarrafaCafeClass::ChecarBotoesCalibrarPesoGarrafa()
 	auto botaoCalibrarGarrafaVazia = digitalRead(PINO_IO_CALIBRACAO_GARRAFA_VAZIA);
 	auto botaoCalibrarGarrafaCheia = digitalRead(PINO_IO_CALIBRACAO_GARRAFA_CHEIA);
 
+	if (botaoCalibrarGarrafaVazia == BOTAO_PRESSIONADO && botaoCalibrarGarrafaCheia == BOTAO_PRESSIONADO)
+	{
+		Buzzer.tocarMelodia(1);
+		Buzzer.tocarMelodia(2);
+	}
+
+
 	if (_modo_calibracao) {
 		InterfaceUsuario.imprimirMensagemLCD("MODO CALIBRACAO", 0, true);
 		while (_modo_calibracao)

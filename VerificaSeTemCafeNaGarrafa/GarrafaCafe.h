@@ -9,7 +9,7 @@
 #include "Balanca.h"
 #include "MensagemStatusGarrafa.h"
 #include "InterfaceUsuario.h"
-
+#include "Buzzer.h"
 
 class GarrafaCafeClass
 {

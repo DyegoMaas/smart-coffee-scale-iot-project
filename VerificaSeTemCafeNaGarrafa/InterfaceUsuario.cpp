@@ -1,4 +1,5 @@
 #include "InterfaceUsuario.h"
+#define PINO_LED_STATUS A4
 
 LiquidCrystal lcd = LiquidCrystal(12, 11, 5, 4, 3, 2);
 byte blocoBarra1[8] = { 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10 };
@@ -11,6 +12,8 @@ void InterfaceUsuarioClass::iniciar()
 {
 	lcd.begin(20, 4);
 	lcd.setCursor(0, 0);
+	pinMode(PINO_LED_STATUS, OUTPUT);
+
 	lcd.write("Iniciando...");
 }
 

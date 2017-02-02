@@ -1,5 +1,3 @@
-// InterfaceUsuario.h
-
 #ifndef _INTERFACEUSUARIO_h
 #define _INTERFACEUSUARIO_h
 

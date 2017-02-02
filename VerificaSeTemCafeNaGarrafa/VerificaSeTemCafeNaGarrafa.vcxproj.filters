@@ -39,6 +39,12 @@
     <ClInclude Include="InterfaceHX711.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Buzzer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Melodias.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Balanca.cpp">
@@ -57,6 +63,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InterfaceHX711.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Buzzer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Melodias.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
