@@ -35,12 +35,14 @@ void loop()
 	auto litrosCafe = GarrafaCafe.QuantidadeCafeEmMl();
 	auto porcentagem = GarrafaCafe._porcentagem_cafe;
 
-	Serial.print("Garrafa vazia: ");
-	Serial.println(GarrafaCafe._peso_garrafa_vazia);
-
 	Serial.print("Peso na balanca: ");
 	Serial.println(Balanca._peso_atual);
 
+	Serial.print("Garrafa vazia: ");
+	Serial.println(GarrafaCafe._peso_garrafa_vazia);
+
+	Serial.print("Garrafa cheia: ");
+	Serial.println(GarrafaCafe._peso_garrafa_cheia);
 	Serial.print("Quantidade cafe (lt): ");
 	Serial.println(litrosCafe);
 

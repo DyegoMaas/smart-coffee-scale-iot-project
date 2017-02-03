@@ -48,10 +48,10 @@ void GarrafaCafeClass::ChecarBotoesCalibrarPesoGarrafa()
 
 	if (botaoCalibrarGarrafaVazia == BOTAO_PRESSIONADO && botaoCalibrarGarrafaCheia == BOTAO_PRESSIONADO)
 	{
+		InterfaceUsuario.mostrarMario();
 		Buzzer.tocarMelodia(1);
 		Buzzer.tocarMelodia(2);
 	}
-
 
 	if (_modo_calibracao) {
 		InterfaceUsuario.imprimirMensagemLCD("MODO CALIBRACAO", 0, true);

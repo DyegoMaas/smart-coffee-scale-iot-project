@@ -15,7 +15,7 @@ class MensagemStatusGarrafaClass
 
 
  public:
-	 const String stringSituacaoGarrafa[5] = { "Sem Garrafa", "Nivel Critico", "Cafe acabando", "Tem cafe", "Pegando cafe" };
+	 const String stringSituacaoGarrafa[5] = { "SEM GARRAFA", "NIVEL CRITICO", "CAFE ACABANDO", "TEM CAFE", "PEGANDO CAFE" };
 
 	 enum SituacaoGarrafa
 	 {

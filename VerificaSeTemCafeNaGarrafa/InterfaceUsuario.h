@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <LiquidCrystal.h>
 #include "MensagemStatusGarrafa.h"
+#include "Mario.h"
 
 class InterfaceUsuarioClass
 {
@@ -20,8 +21,9 @@ public:
 	static void iniciar();
 	static void imprimirBarraProgresso(int linha_lcd, float porcentagem);
 	static void imprimirBarraProgresso(int linha_lcd, int valor, int valor_minimo, int valor_maximo);
-	void imprimirInterfaceLCDPadrao(float porcentagem_cafe, float mls_cafe, int situacao_garrafa) const;
+	void imprimirInterfaceLCDPadrao(float porcentagem_cafe, float litros_cafe, int situacao_garrafa) const;
 	static void imprimirMensagemLCD(String mensagem, int linha, bool clear = false);
+	static void mostrarMario();
 };
 
 extern InterfaceUsuarioClass InterfaceUsuario;

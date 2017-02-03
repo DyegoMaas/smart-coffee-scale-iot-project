@@ -13,7 +13,6 @@
 
 class GarrafaCafeClass
 {
-	float _peso_garrafa_cheia;
 	float _maximo_cafe;
 
 	bool _modo_calibracao = false;
@@ -27,6 +26,8 @@ public:
 	float _porcentagem_cafe;
 	float _peso_cafe;
 	float _peso_garrafa_vazia;
+	float _peso_garrafa_cheia;
+
 
 	explicit GarrafaCafeClass();
 
