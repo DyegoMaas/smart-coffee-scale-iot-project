@@ -10,7 +10,6 @@
 #include <stdlib.h>
 #include <LiquidCrystal.h>
 #include "MensagemStatusGarrafa.h"
-#include "Mario.h"
 
 class InterfaceUsuarioClass
 {

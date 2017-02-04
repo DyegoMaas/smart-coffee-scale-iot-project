@@ -6,6 +6,7 @@ byte blocoBarra2[8] = { 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18 };
 byte blocoBarra3[8] = { 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C };
 byte blocoBarra4[8] = { 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E };
 byte blocoBarra5[8] = { 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F };
+
 int piscaLed = 0;
 bool silenciaAlarme = true;
 unsigned long momentoAlarmeSilenciadoAte;
@@ -600,10 +601,10 @@ byte clean[8] = {
 
 void InterfaceUsuarioClass::mostrarMario()
 {
-	int framesSegundo = 24;
+	int framesSegundo = 30;
 	int tempoDelay = 1000 / framesSegundo;
 	lcd.clear();
-	for (int a = 0; a < 18; a++)
+	for (int a = 0; a < 17; a++)
 	{
 		int b = a + 1;
 		int c = a + 2;
