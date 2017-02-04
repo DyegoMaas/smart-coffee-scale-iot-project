@@ -28,7 +28,6 @@ public:
 	float _peso_garrafa_vazia;
 	float _peso_garrafa_cheia;
 
-
 	explicit GarrafaCafeClass();
 
 	MensagemStatusGarrafaClass::SituacaoGarrafa VerificarSituacaoCafe();

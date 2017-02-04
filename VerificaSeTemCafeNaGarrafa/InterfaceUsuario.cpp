@@ -88,10 +88,15 @@ void checarBotoesPararAlarme()
 
 	if (algumBotaoPressionado)
 	{
-		momentoAlarmeSilenciadoAte = millis() + (500 * 60);
-		silenciaAlarme = true;
+		momentoAlarmeSilenciadoAte = millis();
+		Serial.print("Agora: ");
+		Serial.println(momentoAlarmeSilenciadoAte);
+
+		momentoAlarmeSilenciadoAte += 180000;
 		Serial.print("Alarme silenciado ate: ");
 		Serial.println(momentoAlarmeSilenciadoAte);
+
+		silenciaAlarme = true;
 	}
 
 	if (millis() > momentoAlarmeSilenciadoAte)
@@ -128,24 +133,28 @@ void InterfaceUsuarioClass::imprimirInterfaceLCDPadrao(float porcentagem_cafe, f
 
 	if (situacao_garrafa == MensagemStatusGarrafa.AcabandoCafe)
 	{
+		checarBotoesPararAlarme();
 		digitalWrite(PINO_LED_STATUS, piscaLed == 5);
 		if (!silenciaAlarme)
 			digitalWrite(PINO_BUZZER, piscaLed == 5);
 	}
 	else if (situacao_garrafa == MensagemStatusGarrafa.NivelCriticoCafe)
 	{
+		checarBotoesPararAlarme();
 		digitalWrite(PINO_LED_STATUS, piscaLed % 2);
 		if (!silenciaAlarme)
 			digitalWrite(PINO_BUZZER, piscaLed % 2);
 	}
 	else if (situacao_garrafa == MensagemStatusGarrafa.GarrafaForaDaBalanca)
 	{
+		checarBotoesPararAlarme();
 		digitalWrite(PINO_LED_STATUS, HIGH);
 		if (!silenciaAlarme)
 			digitalWrite(PINO_BUZZER, HIGH);
 	}
 	else
 	{
+		silenciaAlarme = false;
 		digitalWrite(PINO_LED_STATUS, LOW);
 		digitalWrite(PINO_BUZZER, LOW);
 	}
@@ -188,7 +197,6 @@ void InterfaceUsuarioClass::imprimirInterfaceLCDPadrao(float porcentagem_cafe, f
 	{
 		piscaLed++;
 	}
-	checarBotoesPararAlarme();
 }
 
 void InterfaceUsuarioClass::imprimirMensagemLCD(String mensagem, int linha, bool clear)
@@ -197,10 +205,5 @@ void InterfaceUsuarioClass::imprimirMensagemLCD(String mensagem, int linha, bool
 	lcd.setCursor(0, linha);
 	lcd.print(mensagem);
 }
-
-//void InterfaceUsuarioClass::mostarMarioCorrendo()
-//{
-//	Mario.mostrarMario(lcd);
-//}
 
 InterfaceUsuarioClass InterfaceUsuario;

@@ -1,6 +1,8 @@
 #include "GarrafaCafe.h"
 GarrafaCafeClass GarrafaCafe;
 
+unsigned long tempoIgnorandoBotaoCalibracao;
+
 GarrafaCafeClass::GarrafaCafeClass()
 {
 	_peso_garrafa_vazia = MemoriaEeprom.ler(MemoriaEeprom.endereco_garrafa_vazia);
@@ -41,61 +43,72 @@ MensagemStatusGarrafaClass::SituacaoGarrafa GarrafaCafeClass::VerificarSituacaoC
 
 void GarrafaCafeClass::ChecarBotoesCalibrarPesoGarrafa()
 {
-	
+
 	auto botaoCalibrarBalanca = digitalRead(PINO_IO_CALIBRACAO_BALANCA);
 	auto botaoCalibrarGarrafaVazia = digitalRead(PINO_IO_CALIBRACAO_GARRAFA_VAZIA);
 	auto botaoCalibrarGarrafaCheia = digitalRead(PINO_IO_CALIBRACAO_GARRAFA_CHEIA);
 
 	if (botaoCalibrarGarrafaVazia == BOTAO_PRESSIONADO && botaoCalibrarGarrafaCheia == BOTAO_PRESSIONADO)
 	{
-		//InterfaceUsuario.mostarMarioCorrendo();
 		Buzzer.tocarMelodia(1);
 		Buzzer.tocarMelodia(2);
 	}
 
-	if (_modo_calibracao) {
+	if (_modo_calibracao && tempoIgnorandoBotaoCalibracao) {
 		InterfaceUsuario.imprimirMensagemLCD("MODO CALIBRACAO", 0, true);
-		while (_modo_calibracao)
-		{
-			botaoCalibrarBalanca = digitalRead(PINO_IO_CALIBRACAO_BALANCA);
-			botaoCalibrarGarrafaVazia = digitalRead(PINO_IO_CALIBRACAO_GARRAFA_VAZIA);
-			botaoCalibrarGarrafaCheia = digitalRead(PINO_IO_CALIBRACAO_GARRAFA_CHEIA);
-
-			if (botaoCalibrarBalanca == BOTAO_PRESSIONADO)
+		if (millis() > tempoIgnorandoBotaoCalibracao) {
+			InterfaceUsuario.imprimirMensagemLCD("->GARRAFA CHEIA", 1);
+			InterfaceUsuario.imprimirMensagemLCD("->GARRAFA VAZIA", 2);
+			InterfaceUsuario.imprimirMensagemLCD("->BALANCA VAZIA", 3);
+			while (_modo_calibracao)
 			{
-				Balanca.tararBalanca();
-				InterfaceUsuario.imprimirMensagemLCD("BALANCA CALIBRADA", 0, true);
-				Serial.println("BALANCA CALIBRADA");
-				_modo_calibracao = false;
-			}
+				botaoCalibrarBalanca = digitalRead(PINO_IO_CALIBRACAO_BALANCA);
+				botaoCalibrarGarrafaVazia = digitalRead(PINO_IO_CALIBRACAO_GARRAFA_VAZIA);
+				botaoCalibrarGarrafaCheia = digitalRead(PINO_IO_CALIBRACAO_GARRAFA_CHEIA);
 
-			if (botaoCalibrarGarrafaVazia == BOTAO_PRESSIONADO)
-			{
-				atualizarPesoGarrafaVazia();
-				_modo_calibracao = false;
-			}
+				if (botaoCalibrarBalanca == BOTAO_PRESSIONADO && 
+					botaoCalibrarGarrafaVazia != BOTAO_PRESSIONADO &&
+					botaoCalibrarGarrafaCheia != BOTAO_PRESSIONADO)
+				{
+					Balanca.tararBalanca();
+					InterfaceUsuario.imprimirMensagemLCD("BALANCA CALIBRADA", 0, true);
+					Serial.println("BALANCA CALIBRADA");
+					_modo_calibracao = false;
+				}
 
-			if (botaoCalibrarGarrafaCheia == BOTAO_PRESSIONADO)
-			{
-				atualizarPesoGarrafaCheia();
-				_modo_calibracao = false;
+				if (botaoCalibrarBalanca != BOTAO_PRESSIONADO &&
+					botaoCalibrarGarrafaVazia == BOTAO_PRESSIONADO &&
+					botaoCalibrarGarrafaCheia != BOTAO_PRESSIONADO)
+				{
+					atualizarPesoGarrafaVazia();
+					_modo_calibracao = false;
+				}
+
+				if (botaoCalibrarBalanca != BOTAO_PRESSIONADO &&
+					botaoCalibrarGarrafaVazia != BOTAO_PRESSIONADO &&
+					botaoCalibrarGarrafaCheia == BOTAO_PRESSIONADO)
+				{
+					atualizarPesoGarrafaCheia();
+					_modo_calibracao = false;
+				}
 			}
 		}
 	}
-	else
+
+	if (botaoCalibrarBalanca == BOTAO_PRESSIONADO && botaoCalibrarGarrafaCheia == BOTAO_PRESSIONADO)
 	{
-		if(botaoCalibrarBalanca == BOTAO_PRESSIONADO && botaoCalibrarGarrafaCheia == BOTAO_PRESSIONADO)
-		{
-			_modo_calibracao = true;
-		}
+		tempoIgnorandoBotaoCalibracao = millis();
+		tempoIgnorandoBotaoCalibracao += 1000;
+		_modo_calibracao = true;
 	}
+
 }
 
 float GarrafaCafeClass::RecalcularPorcentagemCafeNagarrafa()
 {
 	_maximo_cafe = _peso_garrafa_cheia - _peso_garrafa_vazia;
 	auto pesoAtualNaBalanca = Balanca.lerValorDoPeso();
-	_peso_cafe = pesoAtualNaBalanca - _peso_garrafa_vazia;	
+	_peso_cafe = pesoAtualNaBalanca - _peso_garrafa_vazia;
 	_porcentagem_cafe = _peso_cafe / _maximo_cafe;
 	return _porcentagem_cafe;
 }
