@@ -148,6 +148,7 @@ void InterfaceUsuarioClass::imprimirInterfaceLCDPadrao(float porcentagem_cafe, f
 	else
 	{
 		digitalWrite(PINO_LED_STATUS, LOW);
+		digitalWrite(PINO_BUZZER, LOW);
 	}
 
 	if (silenciaAlarme)
