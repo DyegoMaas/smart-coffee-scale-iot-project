@@ -88,6 +88,7 @@
     <ClInclude Include="GarrafaCafe.h" />
     <ClInclude Include="InterfaceHX711.h" />
     <ClInclude Include="InterfaceUsuario.h" />
+    <ClInclude Include="Mario.h" />
     <ClInclude Include="MemoriaEeprom.h" />
     <ClInclude Include="MensagemStatusGarrafa.h" />
     <ClInclude Include="__vm\.VerificaSeTemCafeNaGarrafa.vsarduino.h" />
@@ -99,6 +100,7 @@
     <ClCompile Include="GarrafaCafe.cpp" />
     <ClCompile Include="InterfaceHX711.cpp" />
     <ClCompile Include="InterfaceUsuario.cpp" />
+    <ClCompile Include="Mario.cpp" />
     <ClCompile Include="MemoriaEeprom.cpp" />
     <ClCompile Include="MensagemStatusGarrafa.cpp" />
   </ItemGroup>
