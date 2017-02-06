@@ -54,7 +54,7 @@ void GarrafaCafeClass::ChecarBotoesCalibrarPesoGarrafa()
 		Buzzer.tocarMelodia(2);
 	}
 
-	if (_modo_calibracao && tempoIgnorandoBotaoCalibracao) {
+	if (_modo_calibracao) {
 		InterfaceUsuario.imprimirMensagemLCD("MODO CALIBRACAO", 0, true);
 		if (millis() > tempoIgnorandoBotaoCalibracao) {
 			InterfaceUsuario.imprimirMensagemLCD("->GARRAFA CHEIA", 1);
@@ -101,7 +101,6 @@ void GarrafaCafeClass::ChecarBotoesCalibrarPesoGarrafa()
 		tempoIgnorandoBotaoCalibracao += 1000;
 		_modo_calibracao = true;
 	}
-
 }
 
 float GarrafaCafeClass::RecalcularPorcentagemCafeNagarrafa()

@@ -3,7 +3,7 @@
 Verificador de quantidade de cafe na garrafa
 -------------------------------------------------------------------
 Versao: 0.1 Alpha
-Desenvolvedor:  Dyego Mass / Alexandre Alvaro
+Desenvolvedor:  Dyego Maas / Alexandre Alvaro
 -------------------------------------------------------------------
 HARDWARE
 Controlador:		ATMega 328p
@@ -21,7 +21,7 @@ a quantidade de liquido fica abaixo de um valor pre-definido.
 
 void setup()
 {
-	auto velocidadeComunicacaoSerial = 115200;
+	const auto velocidadeComunicacaoSerial = 115200;
 	Serial.begin(velocidadeComunicacaoSerial);
 	while (!Serial) {}
 	Serial.println("Serial OK!");
