@@ -45,6 +45,12 @@
     <ClInclude Include="Atmega328p.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EEPROMex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EEPROMVar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Balanca.cpp">
@@ -69,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Atmega328p.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EEPROMex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

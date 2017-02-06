@@ -10,6 +10,8 @@ byte blocoBarra5[8] = { 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F, 0x1F };
 int piscaLed = 0;
 bool silenciaAlarme = true;
 unsigned long momentoAlarmeSilenciadoAte;
+const unsigned long tempoSilenciamento = 600000; //600.000 ms = 10 minutos
+
 
 void InterfaceUsuarioClass::iniciar()
 {
@@ -92,7 +94,7 @@ void checarBotoesPararAlarme()
 		Serial.print("Agora: ");
 		Serial.println(momentoAlarmeSilenciadoAte);
 
-		momentoAlarmeSilenciadoAte += 180000;
+		momentoAlarmeSilenciadoAte += tempoSilenciamento;
 		Serial.print("Alarme silenciado ate: ");
 		Serial.println(momentoAlarmeSilenciadoAte);
 
